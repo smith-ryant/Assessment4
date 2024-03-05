@@ -1,5 +1,5 @@
 // importing the houses array from the "db.json" file
-const houses = require("./db.jsong");
+const houses = require("./db.json");
 // Initializing a globalID variable with a value of 4
 let globalID = 4;
 module.exports = {
@@ -44,6 +44,7 @@ module.exports = {
       price,
       imageURL,
     };
+
     // Adding the new house to the houses array
     houses.push(newHouse);
     // Sending the houses array as the response
@@ -67,15 +68,15 @@ module.exports = {
 
     if (houses[index].price === 10000000 && type === "plus") {
       // If the house price is already at the maximum and the type is plus
-      res.status(400).send("cannot go above 5"); // Return status 400 with an error message
+      res.status(400).send("cannot go above 10000000 "); // Return status 400 with an error message
     } else if (houses[index].price === 0 && type === "minus") {
       // If the house price is already at the minimum and the type is minus
       res.status(400).send("cannot go below 0"); // Return status 400 with an error message
     } else if (type === "plus") {
-      houses[index].price++; // Increment the house price
+      houses[index].price += 10000; // Increment the house price
       res.status(200).send(houses); // Return status 200 with the updated houses array
     } else if (type === "minus") {
-      houses[index].price--; // Decrement the house price
+      houses[index].price -= 5000; // Decrement the house price
       res.status(200).send(houses); // Return status 200 with the updated houses array
     } else {
       res.sendStatus(400); // If the type is not recognized, return status 400
